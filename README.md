@@ -1,11 +1,13 @@
-# EXPERIMENT-03-INTERFACING-DIGITAL-SENSOR-WITH-EDGE-DEVELOPMENT-BOARD-
- 
----
+# EXPERIMENT-03-INTERFACING-DIGITAL-SENSOR-WITH-EDGE-DEVELOPMENT-BOARD----
 
 ### **NAME:**  
-### **DEPARTMENT:**  
+PRIYAN U
+### **DEPARTMENT:** 
+B.E CSE
 ### **ROLL NO:**  
+212224040254
 ### **DATE OF EXPERIMENT:**  
+06/09/2025
 
 ---
 
@@ -54,6 +56,10 @@ The sensor measures **temperature using a thermistor** and **humidity using a ca
 ---
 
 ## **CIRCUIT DIAGRAM:**  
+
+<img width="686" height="696" alt="Screenshot 2025-09-06 161929" src="https://github.com/user-attachments/assets/582ee2ae-eb1d-4486-ac6a-77d0628989c4" />
+
+
 ### **Connections:**  
 
 | DHT22 Pin | Raspberry Pi Pico Pin |
@@ -66,13 +72,38 @@ The sensor measures **temperature using a thermistor** and **humidity using a ca
 ---
 
 ## **PROGRAM (MicroPython)**  
-``` ```
+``` 
+import machine
+import dht
+import time
+
+dht_pin = machine.Pin(28)
+dht_sensor = dht.DHT22(dht_pin)
+
+while True:
+    try:
+        dht_sensor.measure()
+        temperature_celsius = dht_sensor.temperature()
+        humidity_percent = dht_sensor.humidity()
+
+        
+        print("Temperature: {:.2f} °C".format(temperature_celsius))
+        print("Humidity: {:.2f} %".format(humidity_percent))
+
+    except Exception as e:
+        print("Error reading DHT:", str(e))
+
+    time.sleep(1)
+```
+
 
 ---
 
 ## **OUTPUT:**  
  
 ---
+<img width="944" height="1047" alt="Screenshot 2025-09-06 161332" src="https://github.com/user-attachments/assets/1055f1ef-269b-4ebe-a852-609c9f48fb7f" />
+
 
   
 ---
